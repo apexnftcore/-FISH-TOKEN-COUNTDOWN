@@ -1,5 +1,5 @@
-// Set your target date here
-const targetDate = new Date("December 31, 2025 00:00:00").getTime();
+// Set your target date here: November 17, 2025 2:00 AM UTC
+const targetDate = new Date("November 17, 2025 02:00:00 UTC").getTime();
 
 const countdown = setInterval(() => {
   const now = new Date().getTime();
@@ -17,6 +17,6 @@ const countdown = setInterval(() => {
 
   if (distance < 0) {
     clearInterval(countdown);
-    document.getElementById("countdown").innerHTML = "🚀 $FISH Event Started!";
+    document.getElementById("countdown").innerHTML = "🚀 $FISH Claiming Started!";
   }
 }, 1000);
