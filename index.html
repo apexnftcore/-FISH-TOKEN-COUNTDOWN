@@ -12,7 +12,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      /* Background image from URL */
+      /* Updated background image from new URL */
       background: url('https://pbs.twimg.com/media/G53kqn_agAAZx6I?format=png&name=small') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
@@ -21,4 +21,64 @@
 
     .container {
       background: rgba(0, 0, 0, 0.5); /* Translucent overlay */
-      padding:
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    #countdown {
+      font-size: 2rem;
+      margin: 20px 0;
+    }
+
+    a {
+      color: #00ffff;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #ffeb3b;
+      text-shadow: 0 0 5px #ffeb3b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>$FISH Token Countdown</h1>
+    <div id="countdown">
+      <span id="days">00</span> Days
+      <span id="hours">00</span> Hours
+      <span id="minutes">00</span> Minutes
+      <span id="seconds">00</span> Seconds
+    </div>
+    <p>Countdown to $FISH Token Event by 
+      <a href="https://x.com/FishingFrenzyCo" target="_blank">@FishingFrenzyCo</a>
+    </p>
+  </div>
+
+  <script>
+    // Countdown to Nov 17, 2025 2:00 AM UTC
+    const targetDate = new Date("November 17, 2025 02:00:00 UTC").getTime();
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days.toString().padStart(2, "0");
+      document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
+      document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
+      document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "🚀 $FISH Claiming Started!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
